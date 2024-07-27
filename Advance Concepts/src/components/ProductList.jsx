@@ -2,16 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 function ProductList() {
   const [url, setURL] = useState("http://localhost:8000/products");
-  const { data: products, loading,error} = useFetch(url);
+  const { data: products, loading, error } = useFetch(url);
 
   return (
     <section>
-      <div className="">
-        {loading && <p>Loading Products</p>}
-        {error && <p>{error}</p>}
-        
-        </div>
-    
       <div className="filter">
         <button onClick={() => setURL("http://localhost:8000/products")}>
           All
@@ -50,7 +44,10 @@ function ProductList() {
           In Stock Only
         </button>
       </div>
-
+      <div style={{ textAlign: " center" }}>
+        {loading && <p>Loading Products</p>}
+        {error && <p>{error}</p>}
+      </div>
       {products &&
         products.map((product) => (
           <div className="card" key={product.id}>
@@ -69,3 +66,4 @@ function ProductList() {
 }
 
 export default ProductList;
+ 
