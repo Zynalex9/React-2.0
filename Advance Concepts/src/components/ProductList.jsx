@@ -1,18 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
-
+import { useFetch } from '../hooks/useFetch'
 function ProductList() {
-    const [products,setProducts] = useState([])
-    const [URL, setURL] = useState('http://localhost:8000/products')
-    const fetchProducts = useCallback(async ()=>{
-        const res = await fetch(URL) 
-        const data = await res.json()  
-        setProducts(data)
-        },[URL])
-    
-    useEffect(()=>{
-    fetchProducts()
-    console.log("-")
-    },[fetchProducts])
+    const [url, setURL ] = useState('http://localhost:8000/products')
+  const {data:products} =  useFetch(url)
     
     return (
         <section>
@@ -26,7 +16,7 @@ function ProductList() {
             <button onClick={()=> setURL('http://localhost:8000/products?in_stock=true')}>In Stock Only</button>
             </div>
 
-            { products.map((product) => (
+            { products && products.map((product) => (
                 <div className="card" key={product.id}>
                     <p className="id">{product.id}</p>
                     <p className="name">{product.name}</p>
