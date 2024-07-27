@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 function ProductList() {
     const [url, setURL ] = useState('http://localhost:8000/products')
-  const {data:products} =  useFetch(url)
+  const {data:products,loading} =  useFetch(url)
     
     return (
         <section>
+            <div className="">{loading &&<p>Loading Products</p>}</div>
             <div className="filter">
 
             <button onClick={()=> setURL('http://localhost:8000/products')}>All</button>
