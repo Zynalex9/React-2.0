@@ -1,0 +1,31 @@
+{
+    "products":[{
+        "id":10001,
+        "name":"Basic To Advanced In React",
+        "price":29,
+        "category":"React Course",
+        "in_stock":true
+    },
+    {
+        "id":10002,
+        "name":"Basic To Advanced In HTML",
+        "price":29,
+        "category":"HTML Course",
+        "in_stock":true
+    },
+    {
+        "id":10003,
+        "name":"Basic To Advanced In JavaScript",
+        "price":49,
+        "category":"JS Course",
+        "in_stock":false
+    },
+    {
+        "id":10004,
+        "name":"Basic To Advanced In Python",
+        "price":19,
+        "category":"Python Course",
+        "in_stock":false
+    }
+]
+}
