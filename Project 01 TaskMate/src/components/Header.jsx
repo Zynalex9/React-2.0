@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 
 const Header = ({ children, theme, setTheme }) => {
   document.documentElement.classList.add(theme);
@@ -7,7 +7,7 @@ const Header = ({ children, theme, setTheme }) => {
   return (
     <header>
       <span className="logo">
-        <img src={logo} alt="" />
+        <h1>Todo List </h1>
       </span>
       <span className="themeSelector">
         <span className={theme === "light" ? "light activeTheme" : "light"} onClick={() => setTheme("light")}></span>
