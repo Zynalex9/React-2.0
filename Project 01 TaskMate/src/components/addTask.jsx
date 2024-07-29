@@ -16,6 +16,7 @@ const AddTask = ({ taskList, setTaskList, task, setTask }) => {
           : todo;
       });
       setTaskList(updatedTaskList);
+      setTask({});
     } else {
       setTaskList([
         ...taskList,
@@ -28,7 +29,8 @@ const AddTask = ({ taskList, setTaskList, task, setTask }) => {
     }
 
     setTask({ id: "", name: "", time: "" }); // Reset task
-    e.target.task.value = ""; // Clear the input field
+    setTask({});
+
   };
 
   return (
@@ -43,7 +45,7 @@ const AddTask = ({ taskList, setTaskList, task, setTask }) => {
           placeholder="Add task"
           maxLength="25"
         />
-        <button type="submit">Add</button>
+        <button type="submit">{task.id ? "Update" : "Add"}</button>
       </form>
     </section>
   );
