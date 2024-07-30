@@ -17,6 +17,9 @@ const Header = () => {
         <NavLink to="/contact" className="link">
           Contact
         </NavLink>
+        <NavLink to="/admin" className="link">
+          Admin Area
+        </NavLink>
       </nav>
     </header>
   );
