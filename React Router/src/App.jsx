@@ -8,9 +8,10 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Contact from "./components/Contact";
 import Admin from "./components/Admin";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
-  let user = true;
+  let user = false;
 
   return (
     <div className="App">
@@ -23,8 +24,9 @@ function App() {
           <Route path="products/:id" element={<ProductDetail />} />
           <Route
             path="/admin"
-            element={user ? <Admin /> : <Navigate to="/" />}
+            element={user ? <Admin /> : <ErrorPage/>}
           />
+          <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </main>
       <Footer />
