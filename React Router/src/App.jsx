@@ -10,7 +10,7 @@ import Contact from "./components/Contact";
 import Admin from "./components/Admin";
 
 function App() {
-  let user = true
+  let user = true;
 
   return (
     <div className="App">
@@ -20,10 +20,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="products" element={<ProductList />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="products/1001" element={<ProductDetail />} />
+          <Route path="products/:id" element={<ProductDetail />} />
           <Route
             path="/admin"
-            element={user ? <Admin /> : <Navigate to="/"/>}
+            element={user ? <Admin /> : <Navigate to="/" />}
           />
         </Routes>
       </main>
