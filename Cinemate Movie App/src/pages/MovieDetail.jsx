@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Backup from "../assets/Backup.jpg";
+import { useTitle } from "../hooks/useTitle";
 
 function MovieDetail() {
   const params = useParams();
   const [movie, setMovie] = useState({});
   const image = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : Backup ;
-
   useEffect(() => {
     async function fetchMovie(){
       const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=b80d59c33d6d57ed9c7e3713f91c188a`);
@@ -16,6 +16,7 @@ function MovieDetail() {
     }
     fetchMovie();
   }, [])
+  const pageTitle = useTitle(movie.title)
 
   return (
     <main>
@@ -23,7 +24,7 @@ function MovieDetail() {
         <div className="max-w-sm">
           <img className="rounded" src={image} alt={movie.title} />
         </div>
-        <div className="max-w-2xl text-gray-700 text-lg dark:text-white">
+        <div className="max-w-2xl text-gray-700 text-lg dark:text-white ml-4">
           <h1 className="text-4xl font-bold my-3 text-center lg:text-left">{movie.title}</h1>
           <p className="my-4">{movie.overview}</p>
             { movie.genres ? (
@@ -63,7 +64,7 @@ function MovieDetail() {
 
           <p className="my-4">
             <span className="mr-2 font-bold">IMDB Code:</span>
-            <a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank" rel="noreferrer">{movie.imdb_id}</a>
+            <a href={`https://www.imdb.com/title/${movie.imdb_id}`} className="underline text-blue-700" target="_blank" rel="noreferrer">{movie.imdb_id}</a>
           </p>
 
         </div>
