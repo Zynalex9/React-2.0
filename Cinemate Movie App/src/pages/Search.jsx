@@ -7,7 +7,7 @@ function MovieList({apiPath}) {
   console.log(apiPath)
   const [searchParams] = useSearchParams()
   const queryTerm = searchParams.get('q')
- const {data:movies} = useFetch(apiPath,searchParams)
+ const {data:movies} = useFetch(apiPath,queryTerm)
 
   return (
     <>
