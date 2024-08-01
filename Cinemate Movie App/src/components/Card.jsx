@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 function Card({movies}) {
  const {id,title,overview,poster_path} = movies
- console.log(movies)
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
       <Link to="#">
