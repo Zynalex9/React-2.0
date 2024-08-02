@@ -4,61 +4,72 @@
             "id": 1,
             "name": "Sony WH-1000XM4",
             "price": 2500,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1599139894727-62676829679b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 2,
             "name": "Bose QuietComfort 35 II",
             "price": 3000,
-            "inStock": true
+            "inStock": true,
+            "imgURl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 3,
             "name": "Apple AirPods Max",
             "price": 5500,
-            "inStock": true
+            "inStock": true,
+            "imgURl":"https://images.unsplash.com/photo-1505739718967-6df30ff369c7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 4,
             "name": "Beats Solo Pro",
             "price": 2000,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            
         },
         {
             "id": 5,
             "name": "Sennheiser HD 450BT",
             "price": 1800,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1481207801830-97f0f9a1337e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 6,
             "name": "Sony WF-1000XM4",
             "price": 2500,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 7,
             "name": "Jabra Elite 85t",
             "price": 2200,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1604936809881-d8113b290d47?q=80&w=1941&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 8,
             "name": "Anker Soundcore Life Q30",
             "price": 800,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1483032469466-b937c425697b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 9,
             "name": "Bowers & Wilkins PX7",
             "price": 4000,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://plus.unsplash.com/premium_photo-1679695191609-7c85b5939493?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "id": 10,
             "name": "Samsung Galaxy Buds Pro",
             "price": 1700,
-            "inStock": true
+            "inStock": true,
+            "imgURL": "https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
     ]
 }
