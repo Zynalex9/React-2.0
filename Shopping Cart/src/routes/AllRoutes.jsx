@@ -7,7 +7,7 @@ function AllRoutes({products, setProducts,cardItems,setCardItems}) {
     <>
     <Routes>
         <Route path='/' element={<Home products={products} setProducts={setProducts} cardItems={cardItems} setCardItems={setCardItems}/>}/>
-        <Route path='Cart' element={<CartPage/>}/>
+        <Route path='Cart' element={<CartPage cardItems={cardItems}/>}/>
     </Routes>
     </>
   )

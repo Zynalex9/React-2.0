@@ -6,8 +6,8 @@ function Home({ products, setProducts, cardItems, setCardItems }) {
     <div className="flex items-center justify-around gap-4 flex-wrap my-4">
       {products.map((product, idx) => (
         <ProductCard
-          key={idx}
-          product={product}
+          key={product.id} // Use product.id for the key
+          product={product} // Pass the product object here
           setProducts={setProducts}
           cardItems={cardItems}
           setCardItems={setCardItems}

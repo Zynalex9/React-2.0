@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-function Header() {
+function Header({cardItems}) {
   return (
     <header>
       <nav className='flex justify-between p-4 border-b-2'>
@@ -13,7 +13,7 @@ function Header() {
             <h2>Cart</h2>
           </NavLink>
         </div>
-        <div>Cart: 1</div>
+        <div>Cart: {cardItems.length}</div>
       </nav>
     </header>
   )

@@ -1,9 +1,10 @@
 import React from 'react'
+import { CartCard } from '../components'
 
-function CartPage() {
+function CartPage({ cardItems, setCardItems }) {
   return (
     <div>
-      <h1 className='text-4xl text-center'>Cart Page</h1>
+     <CartCard cardItems={cardItems}/>
     </div>
   )
 }

@@ -1,51 +1,61 @@
 {
     "products": [
         {
+            "id": 1,
             "name": "Sony WH-1000XM4",
             "price": 2500,
             "inStock": true
         },
         {
+            "id": 2,
             "name": "Bose QuietComfort 35 II",
             "price": 3000,
             "inStock": true
         },
         {
+            "id": 3,
             "name": "Apple AirPods Max",
             "price": 5500,
             "inStock": true
         },
         {
+            "id": 4,
             "name": "Beats Solo Pro",
             "price": 2000,
             "inStock": true
         },
         {
+            "id": 5,
             "name": "Sennheiser HD 450BT",
             "price": 1800,
             "inStock": true
         },
         {
+            "id": 6,
             "name": "Sony WF-1000XM4",
             "price": 2500,
             "inStock": true
         },
         {
+            "id": 7,
             "name": "Jabra Elite 85t",
             "price": 2200,
             "inStock": true
         },
         {
+            "id": 8,
             "name": "Anker Soundcore Life Q30",
             "price": 800,
             "inStock": true
         },
         {
+            "id": 9,
             "name": "Bowers & Wilkins PX7",
             "price": 4000,
             "inStock": true
         },
         {
+            "id": 10,
             "name": "Samsung Galaxy Buds Pro",
             "price": 1700,
             "inStock": true

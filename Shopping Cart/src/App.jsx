@@ -20,7 +20,7 @@ function App() {
   }, []);
   return (
     <>
-      <Header />
+      <Header cardItems={cardItems}/>
       <AllRoutes products={products} setProducts={setProducts} cardItems={cardItems} setCardItems={setCardItems}/>
     </>
   );
