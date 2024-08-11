@@ -7,6 +7,8 @@ import {
   doc,
   addDoc,
   deleteDoc,
+  query,
+  where
 } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBtEZmbAlyrRZJLXV9GJX3lHzI-xPauwCQ",
@@ -20,24 +22,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, "movies");
-// getDocs(colRef)
-//   .then((data) => {
-//     let movies = [];
-//     data.docs.forEach((doc) => {
-//       movies.push({ ...doc.data(), id: doc.id });
-//     });
-//     console.log(movies);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+const qRef = query(colRef, where("category", "==", "action"));
 
-onSnapshot(colRef, (data) => {
+getDocs(qRef)
+  .then((data) => {
+    let movies = [];
+    data.docs.forEach((doc) => {
+      movies.push({ ...doc.data(), id: doc.id });
+    });
+    console.log("Filtered Movies:", movies);
+  })
+  .catch((error) => {
+    console.error("Error fetching documents:", error);
+  });
+
+onSnapshot(colRef, (snapshot) => {
   let movies = [];
-  data.docs.forEach((doc) => {
+  snapshot.docs.forEach((doc) => {
     movies.push({ ...doc.data(), id: doc.id });
   });
-  console.log(movies);
+  console.log("All Movies (Real-time):", movies);
 });
 
 const addForm = document.querySelector(".add");
@@ -46,10 +50,12 @@ addForm.addEventListener("submit", (e) => {
   addDoc(colRef, {
     name: addForm.name.value,
     description: addForm.description.value,
+    category: addForm.category.value,
   }).then(() => {
     addForm.reset();
   });
 });
+
 const delForm = document.querySelector(".delete");
 delForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -61,7 +67,7 @@ delForm.addEventListener("submit", async (e) => {
       await deleteDoc(docRef);
       delForm.reset();
     } catch (error) {
-      console.error("Error deleting document: ", error);
+      console.error("Error deleting document:", error);
     }
   } else {
     console.error("ID value is empty");
