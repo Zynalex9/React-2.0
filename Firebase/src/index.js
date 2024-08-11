@@ -3,6 +3,7 @@ import {
   getFirestore,
   collection,
   getDocs,
+  onSnapshot,
   doc,
   addDoc,
   deleteDoc,
@@ -19,17 +20,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, "movies");
-getDocs(colRef)
-  .then((data) => {
-    let movies = [];
-    data.docs.forEach((doc) => {
-      movies.push({ ...doc.data(), id: doc.id });
-    });
-    console.log(movies);
-  })
-  .catch((error) => {
-    console.log(error);
+// getDocs(colRef)
+//   .then((data) => {
+//     let movies = [];
+//     data.docs.forEach((doc) => {
+//       movies.push({ ...doc.data(), id: doc.id });
+//     });
+//     console.log(movies);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+onSnapshot(colRef, (data) => {
+  let movies = [];
+  data.docs.forEach((doc) => {
+    movies.push({ ...doc.data(), id: doc.id });
   });
+  console.log(movies);
+});
+
 const addForm = document.querySelector(".add");
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -44,12 +54,12 @@ const delForm = document.querySelector(".delete");
 delForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const idInput = delForm.querySelector("input[name='id']");
-  const idValue = idInput.value.trim(); 
+  const idValue = idInput.value.trim();
   if (idValue) {
     try {
       const docRef = doc(db, "movies", idValue);
       await deleteDoc(docRef);
-      delForm.reset(); 
+      delForm.reset();
     } catch (error) {
       console.error("Error deleting document: ", error);
     }
