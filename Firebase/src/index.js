@@ -1,7 +1,25 @@
 import { initializeApp } from "firebase/app";
 import {
-  getFirestore, collection, getDocs, onSnapshot, doc, addDoc, deleteDoc, query, where, orderBy, serverTimestamp, updateDoc, getDoc,
+  getFirestore,
+  collection,
+  getDocs,
+  onSnapshot,
+  doc,
+  addDoc,
+  deleteDoc,
+  query,
+  where,
+  orderBy,
+  serverTimestamp,
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyBtEZmbAlyrRZJLXV9GJX3lHzI-xPauwCQ",
   authDomain: "notnotion-bff1b.firebaseapp.com",
@@ -13,20 +31,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+const auth = getAuth();
 const colRef = collection(db, "movies");
 const qRef = query(
   colRef,
   where("category", "==", "comedy"),
   orderBy("createdAt")
 );
-const individualDoc = doc(db, "movies", "Yl7bMC8THHd83hKBkWKK"); // Reference to the specific document
+const individualDoc = doc(db, "movies", "Yl7bMC8THHd83hKBkWKK");
 
-getDoc(individualDoc) // Fetch the document
+getDoc(individualDoc)
   .then((data) => {
-    console.log(data.data()); // Log the document's data
+    console.log(data.data());
   })
   .catch((error) => {
-    console.error("Error fetching document:", error); // Handle any errors
+    console.error("Error fetching document:", error);
   });
 getDocs(qRef)
   .then((data) => {
@@ -89,5 +108,41 @@ updateForm.addEventListener("submit", (e) => {
     updatedAt: serverTimestamp(),
   }).then(() => {
     updateForm.reset();
+  });
+});
+
+const registerForm = document.querySelector(".register");
+
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  createUserWithEmailAndPassword(
+    auth,
+    registerForm.email.value,
+    registerForm.password.value
+  )
+    .then((credentials) => {
+      console.log(credentials);
+      registerForm.reset();
+    })
+    .catch((error) => console.log(error));
+});
+
+const loginForm = document.querySelector(".login");
+loginForm.addEventListener("submit",e=>{
+  e.preventDefault()
+  signInWithEmailAndPassword(
+    auth,
+    loginForm.email.value,
+    loginForm.password.value)
+    .then((loginCred)=>{
+      console.log("Welcome", loginCred.user.email)
+      loginForm.reset()
+    })
+})
+
+const logOutBtn = document.querySelector(".logout");
+logOutBtn.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    console.log("User Logout");
   });
 });
