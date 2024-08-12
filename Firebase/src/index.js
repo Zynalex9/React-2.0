@@ -1,17 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  onSnapshot,
-  doc,
-  addDoc,
-  deleteDoc,
-  query,
-  where,
-  orderBy,
-  serverTimestamp,
-  updateDoc
+  getFirestore, collection, getDocs, onSnapshot, doc, addDoc, deleteDoc, query, where, orderBy, serverTimestamp, updateDoc, getDoc,
 } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBtEZmbAlyrRZJLXV9GJX3lHzI-xPauwCQ",
@@ -25,8 +14,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, "movies");
-const qRef = query(colRef, where("category", "==", "comedy"), orderBy("createdAt"));
+const qRef = query(
+  colRef,
+  where("category", "==", "comedy"),
+  orderBy("createdAt")
+);
+const individualDoc = doc(db, "movies", "Yl7bMC8THHd83hKBkWKK"); // Reference to the specific document
 
+getDoc(individualDoc) // Fetch the document
+  .then((data) => {
+    console.log(data.data()); // Log the document's data
+  })
+  .catch((error) => {
+    console.error("Error fetching document:", error); // Handle any errors
+  });
 getDocs(qRef)
   .then((data) => {
     let movies = [];
@@ -79,14 +80,14 @@ delForm.addEventListener("submit", async (e) => {
   }
 });
 
-const updateForm = document.querySelector(".update")
-updateForm.addEventListener("submit",(e)=>{
-  e.preventDefault()
-  const docRef = doc(db,"movies",updateForm.id.value)
-  updateDoc(docRef,{
+const updateForm = document.querySelector(".update");
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const docRef = doc(db, "movies", updateForm.id.value);
+  updateDoc(docRef, {
     name: updateForm.name.value,
-    updatedAt: serverTimestamp()
-  }).then(()=>{
-    updateForm.reset()
-  })
-})
+    updatedAt: serverTimestamp(),
+  }).then(() => {
+    updateForm.reset();
+  });
+});
