@@ -8,7 +8,10 @@ import {
   addDoc,
   deleteDoc,
   query,
-  where
+  where,
+  orderBy,
+  serverTimestamp,
+  updateDoc
 } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBtEZmbAlyrRZJLXV9GJX3lHzI-xPauwCQ",
@@ -22,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, "movies");
-const qRef = query(colRef, where("category", "==", "action"));
+const qRef = query(colRef, where("category", "==", "comedy"), orderBy("createdAt"));
 
 getDocs(qRef)
   .then((data) => {
@@ -30,7 +33,7 @@ getDocs(qRef)
     data.docs.forEach((doc) => {
       movies.push({ ...doc.data(), id: doc.id });
     });
-    console.log("Filtered Movies:", movies);
+    console.log("Comedy Movies:", movies);
   })
   .catch((error) => {
     console.error("Error fetching documents:", error);
@@ -49,8 +52,10 @@ addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addDoc(colRef, {
     name: addForm.name.value,
-    description: addForm.description.value,
+    // description: addForm.description.value,
     category: addForm.category.value,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
   }).then(() => {
     addForm.reset();
   });
@@ -73,3 +78,15 @@ delForm.addEventListener("submit", async (e) => {
     console.error("ID value is empty");
   }
 });
+
+const updateForm = document.querySelector(".update")
+updateForm.addEventListener("submit",(e)=>{
+  e.preventDefault()
+  const docRef = doc(db,"movies",updateForm.id.value)
+  updateDoc(docRef,{
+    name: updateForm.name.value,
+    updatedAt: serverTimestamp()
+  }).then(()=>{
+    updateForm.reset()
+  })
+})
