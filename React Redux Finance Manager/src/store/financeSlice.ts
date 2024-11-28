@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadFromLocalStorage } from "../utils/localStorage";
 interface Income {
   id: string;
   source: string;
@@ -22,7 +23,9 @@ interface FinanceState {
   expenses: Expense[];
   budget: Budget[];
 }
-const initialState: FinanceState = {
+
+const persistedState = loadFromLocalStorage<FinanceState>("financestate");
+const initialState: FinanceState = persistedState || {
   incomes: [],
   expenses: [],
   budget: [],
@@ -44,5 +47,5 @@ const financeSlice = createSlice({
   },
 });
 
-export const {addBudget, addIncome, addExpense} = financeSlice.actions
+export const { addBudget, addIncome, addExpense } = financeSlice.actions;
 export default financeSlice.reducer;
