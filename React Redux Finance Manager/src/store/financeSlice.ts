@@ -1,20 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loadFromLocalStorage } from "../utils/localStorage";
 interface Income {
-  id: string;
+  id: number;
   source: string;
   amount: number;
 }
 
 interface Expense {
-  id: string;
-  description: string;
+  id: number;
   category: string;
   amount: number;
 }
 
 interface Budget {
-  id: string;
+  id: number;
   category: string;
   amount: number;
 }
@@ -67,6 +66,7 @@ const financeSlice = createSlice({
         console.log("Expense Exceding income");
       } else {
         state.expenses.push(action.payload);
+        console.log(state.expenses)
       }
     },
   },

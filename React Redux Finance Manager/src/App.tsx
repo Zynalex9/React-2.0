@@ -1,7 +1,12 @@
+import { AddIncome, AddBudget, AddExpenses } from "./components";
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <main>
+      <div className="top w-full flex justify-between p-2 gap-2">
+        <AddIncome />
+        <AddBudget />
+        <AddExpenses />
+      </div>
+    </main>
+  );
 }
