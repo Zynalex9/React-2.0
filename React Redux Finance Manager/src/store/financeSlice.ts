@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loadFromLocalStorage } from "../utils/localStorage";
 interface Income {
   id: string;
@@ -34,15 +34,40 @@ const financeSlice = createSlice({
   name: "finances",
   initialState,
   reducers: {
-    addIncome: (state, action) => {
+    addIncome: (state, action:PayloadAction<Income>) => {
       state.incomes.push(action.payload);
       console.log("Action: ", action);
     },
-    addBudget: (state, action) => {
-      state.budget.push(action.payload);
+    addBudget: (state, action:PayloadAction<Budget>) => {
+      const totalIncome = state.incomes.reduce(
+        (sum, income) => sum + income.amount,
+        0
+      );
+      const totalBudget = state.budget.reduce(
+        (sum, budget) => sum + budget.amount,
+        0
+      );
+      if (totalBudget + action.payload.amount > totalIncome) {
+        console.log("Budget Exceding income");
+      } else {
+        state.budget.push(action.payload);
+      }
     },
-    addExpense: (state, action) => {
-      state.expenses.push(action.payload);
+    addExpense: (state, action:PayloadAction<Expense>) => {
+      const totalIncome = state.incomes.reduce(
+        (sum, income) => sum + income.amount,
+        0
+      );
+
+      const totalExpense = state.expenses.reduce(
+        (sum, expense) => sum + expense.amount,
+        0
+      );
+      if (totalExpense + action.payload.amount> totalIncome) {
+        console.log("Expense Exceding income");
+      } else {
+        state.expenses.push(action.payload);
+      }
     },
   },
 });
