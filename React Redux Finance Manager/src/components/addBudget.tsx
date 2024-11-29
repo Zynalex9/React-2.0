@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import { AddBudgetFormValues,budgetSchema } from "../zod/Schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBudget } from "../store/financeSlice";
+import { toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 interface formData {
   amount: number;
   category: string;
 }
 const AddBudget = () => {
   const dispatch = useDispatch();
+  let error = useSelector((state:any)=>state.finance.budgetError)
   const {
     register,
     handleSubmit,
@@ -29,7 +32,14 @@ const AddBudget = () => {
     };
     dispatch(addBudget(budget));
     reset();
+    if (error) {
+      toast.dismiss("unique-error-id"); 
+      toast.error(error, { toastId: "unique-error-id" });
+      error=null
+
+    }
   };
+ 
   return (
     <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-4 text-gray-800">Add Budget</h1>

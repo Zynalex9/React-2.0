@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import { AddExpensesFormValues,expenseSchema} from "../zod/Schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { addExpense } from "../store/financeSlice";
+import { toast } from "react-toastify";
 interface formData {
   amount: number;
   category: string;
 }
 const AddExpense = () => {
   const dispatch = useDispatch();
+  let error = useSelector((state:any)=>state.finance.expenseError)
   const {
     register,
     handleSubmit,
@@ -29,7 +31,13 @@ const AddExpense = () => {
     };
     dispatch(addExpense(expense));
     reset();
+    if (error) {
+      toast.dismiss("unique-error-id"); 
+      toast.error(error, { toastId: "unique-error-id" });
+      error=null
+    }
   };
+
   return (
     <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-4 text-gray-800">Add Expenses</h1>
