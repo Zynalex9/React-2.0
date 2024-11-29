@@ -1,16 +1,23 @@
-import { AddIncome, AddBudget, AddExpenses, TotalBudget, TotalIncome, TotalExpenses } from "./components";
+import {
+  AddIncome,
+  AddBudget,
+  AddExpenses,
+  TotalBudget,
+  TotalIncome,
+  TotalExpenses,
+} from "./components";
 export default function App() {
   return (
-    <main>
-      <div className="top w-full flex justify-between p-2 gap-2">
+    <main className="bg-gray-100  p-4">
+      <div className="top w-full flex justify-between gap-2">
+        <TotalIncome />
+        <TotalBudget />
+        <TotalExpenses />
+      </div>
+      <div className="flex items-center justify-between w-full gap-2">
         <AddIncome />
         <AddBudget />
         <AddExpenses />
-      </div>
-      <div className="flex items-center justify-between w-full p-2 gap-2">
-      <TotalIncome/>
-      <TotalBudget/>
-      <TotalExpenses/>
       </div>
     </main>
   );

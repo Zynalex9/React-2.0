@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { GrMoney } from "react-icons/gr";
+import { HiOutlineCollection } from "react-icons/hi";
+
 
 const totalBudget = () => {
   const budgets = useSelector((state: any) => state.finance.budget);
@@ -15,7 +16,7 @@ const totalBudget = () => {
       </h3>
       <div className="flex bg-gray-50 items-center justify-between p-4 rounded-lg">
         <div className="flex items-center space-x-3">
-          <GrMoney size={32} />
+          <HiOutlineCollection size={32} color="green"/>
           <span className="text-lg font-medium text-gray-700">Budget:</span>
         </div>
         <p className="text-xl font-semibold text-gray-700">{totalBudget ? `$${totalBudget}` : "No Added Budget yet"}</p>
