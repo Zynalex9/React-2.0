@@ -35,7 +35,6 @@ const financeSlice = createSlice({
   reducers: {
     addIncome: (state, action:PayloadAction<Income>) => {
       state.incomes.push(action.payload);
-      console.log("Action: ", action);
     },
     addBudget: (state, action:PayloadAction<Budget>) => {
       const totalIncome = state.incomes.reduce(

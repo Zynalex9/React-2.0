@@ -1,4 +1,4 @@
-import { AddIncome, AddBudget, AddExpenses } from "./components";
+import { AddIncome, AddBudget, AddExpenses, TotalBudget, TotalIncome } from "./components";
 export default function App() {
   return (
     <main>
@@ -7,6 +7,7 @@ export default function App() {
         <AddBudget />
         <AddExpenses />
       </div>
+      <TotalIncome/>
     </main>
   );
 }

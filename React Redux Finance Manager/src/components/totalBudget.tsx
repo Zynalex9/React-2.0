@@ -1,10 +1,5 @@
-
 const totalBudget = () => {
-  return (
-    <div>
-      lore
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default totalBudget
+export default totalBudget;
