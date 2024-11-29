@@ -10,12 +10,12 @@ import {
 const Home = () => {
   return (
     <main className="bg-gray-100  p-4">
-    <div className="top w-full flex justify-between gap-2">
+    <div className="top w-full flex md:flex-nowrap flex-wrap justify-between gap-2">
       <TotalIncome />
       <TotalBudget />
       <TotalExpenses />
     </div>
-    <div className="flex items-center justify-between w-full gap-2">
+    <div className="flex items-center justify-between md:flex-nowrap flex-wrap w-full gap-2">
       <AddIncome />
       <AddBudget />
       <AddExpenses />

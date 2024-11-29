@@ -9,7 +9,7 @@ const TotalIncome = () => {
   );
 
   return (
-    <div className="shadow-md rounded-lg p-6 bg-white w-1/3">
+    <div className="shadow-md rounded-lg p-6 bg-white w-full md:w-1/3 ">
       <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
         Total Income
       </h3>

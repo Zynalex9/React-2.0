@@ -1,6 +1,8 @@
 import React from "react";
+import { useTodo } from "../context";
 
 const Input = () => {
+  const {addTodo} = useTodo()
   return (
     <div className="flex items-center  justify-center flex-col w-full gap-4 py-5">
       <h1 className="text-white text-4xl font-mono">Enter Your Task Here !!</h1>
